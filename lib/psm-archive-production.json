@@ -1,0 +1,382 @@
+{
+  "environment": {
+    "deploymentEnvironmentId": 8174,
+    "accountId": 33255,
+    "name": "psm-archive-production",
+    "provider": "Agent",
+    "environmentAccessKey": "kqc8md1kdpms6p8h",
+    "settings": {
+      "providerSettings": [
+        {
+          "name": "JsPlc.Ssc.PsmArchive.Web.deploy_website",
+          "value": {
+            "isEncrypted": false,
+            "value": "true"
+          }
+        },
+        {
+          "name": "JsPlc.Ssc.PsmArchive.Api.deploy_website",
+          "value": {
+            "isEncrypted": false,
+            "value": "true"
+          }
+        },
+        {
+          "name": "JsPlc.Ssc.PsmArchive.Api.group",
+          "value": {
+            "isEncrypted": false,
+            "value": "api"
+          }
+        },
+        {
+          "name": "JsPlc.Ssc.PsmArchive.Web.group",
+          "value": {
+            "isEncrypted": false,
+            "value": "web"
+          }
+        },
+        {
+          "name": "JsPlc.Ssc.PsmArchive.Api.apppool_name",
+          "value": {
+            "isEncrypted": false,
+            "value": "JsPlc.Ssc.PsmArchive.Api"
+          }
+        },
+        {
+          "name": "JsPlc.Ssc.PsmArchive.Api.site_name",
+          "value": {
+            "isEncrypted": false,
+            "value": "JsPlc.Ssc.PsmArchive.Api"
+          }
+        },
+        {
+          "name": "JsPlc.Ssc.PsmArchive.Web.apppool_name",
+          "value": {
+            "isEncrypted": false,
+            "value": "JsPlc.Ssc.PsmArchive.Web"
+          }
+        },
+        {
+          "name": "JsPlc.Ssc.PsmArchive.Web.site_name",
+          "value": {
+            "isEncrypted": false,
+            "value": "JsPlc.Ssc.PsmArchive.Web"
+          }
+        },
+        {
+          "name": "JsPlc.Ssc.PsmArchive.Database.deploy_database",
+          "value": {
+            "isEncrypted": false,
+            "value": "true"
+          }
+        },
+        {
+          "name": "JsPlc.Ssc.PsmArchive.Database.group",
+          "value": {
+            "isEncrypted": false,
+            "value": "database_ci"
+          }
+        },
+        {
+          "name": "JsPlc.Ssc.PsmArchive.Database.connection_string",
+          "value": {
+            "isEncrypted": false,
+            "value": "Data Source=database.dev.psm-archive.js-devops.co.uk;Initial Catalog=PsmArchive;User ID=admin;Password=25$2AMBQ&fS8HFU%vh^P"
+          }
+        },
+        {
+          "name": "JsPlc.Ssc.PsmArchive.DataImport.deploy_app",
+          "value": {
+            "isEncrypted": false,
+            "value": "true"
+          }
+        },
+        {
+          "name": "JsPlc.Ssc.PsmArchive.DataImport.group",
+          "value": {
+            "isEncrypted": false,
+            "value": "database_ci"
+          }
+        },
+        {
+          "name": "JsPlc.Ssc.PsmArchive.DataImport.deploy_order",
+          "value": {
+            "isEncrypted": false,
+            "value": "2"
+          }
+        },
+        {
+          "name": "JsPlc.Ssc.PsmArchive.Database.deploy_order",
+          "value": {
+            "isEncrypted": false,
+            "value": "1"
+          }
+        }
+      ],
+      "environmentVariables": [
+        {
+          "name": "ApiBaseUrl",
+          "value": {
+            "isEncrypted": false,
+            "value": "http://api.production.psm-archive.js-devops.co.uk/api"
+          }
+        },
+        {
+          "name": "PsmArchiveConnection",
+          "value": {
+            "isEncrypted": false,
+            "value": "data source=database.production.psm-archive.js-devops.co.uk;initial catalog=PsmArchive;persist security info=True;user id=psmarchive;password=asY7lan*ka~991;multipleactiveresultsets=True;application name=EntityFramework"
+          }
+        },
+        {
+          "name": "AwsArchiveS3Url",
+          "value": {
+            "isEncrypted": false,
+            "value": "https://s3-eu-west-1.amazonaws.com/production.psm-archive.js-devops.co.uk"
+          }
+        },
+        {
+          "name": "AwsArchiveBucketName",
+          "value": {
+            "isEncrypted": false,
+            "value": "production.psm-archive.js-devops.co.uk"
+          }
+        },
+        {
+          "name": "AwsArchiveAccessKey",
+          "value": {
+            "isEncrypted": true,
+            "value": "AKIAI4C7RSNK2SW2PHLA"
+          }
+        },
+        {
+          "name": "AwsArchiveSecretKey",
+          "value": {
+            "isEncrypted": true,
+            "value": "roytXgiURCu0y8IJL/Yq39MmqhxnNOe7g36D+A+3"
+          }
+        },
+        {
+          "name": "ArchiveDataSource",
+          "value": {
+            "isEncrypted": false,
+            "value": "S3"
+          }
+        },
+        {
+          "name": "ArchiveDataSourceFileSystemPath",
+          "value": {
+            "isEncrypted": false,
+            "value": "."
+          }
+        },
+        {
+          "name": "ida:FederationMetadataLocation",
+          "value": {
+            "isEncrypted": false
+          }
+        },
+        {
+          "name": "ida:Realm",
+          "value": {
+            "isEncrypted": false
+          }
+        },
+        {
+          "name": "ida:AudienceUri",
+          "value": {
+            "isEncrypted": false
+          }
+        },
+        {
+          "name": "sql_password",
+          "value": {
+            "isEncrypted": true,
+            "value": "25$2AMBQ&fS8HFU%vh^P"
+          }
+        },
+        {
+          "name": "sql_user",
+          "value": {
+            "isEncrypted": false,
+            "value": "admin"
+          }
+        },
+        {
+          "name": "sql_db",
+          "value": {
+            "isEncrypted": false,
+            "value": "database.production.psm-archive.js-devops.co.uk"
+          }
+        },
+        {
+          "name": "sqlpass",
+          "value": {
+            "isEncrypted": true,
+            "value": "25$2AMBQ&fS8HFU%vh^P"
+          }
+        },
+        {
+          "name": "sqluser",
+          "value": {
+            "isEncrypted": false,
+            "value": "admin"
+          }
+        },
+        {
+          "name": "connectionString",
+          "value": {
+            "isEncrypted": false,
+            "value": "data source=database.production.psm-archive.js-devops.co.uk;initial catalog=PsmArchive;persist security info=True;user id=psmarchive;password=asY7lan*ka~991;multipleactiveresultsets=True;application name=EntityFramework"
+          }
+        },
+        {
+          "name": "PsmArchiveConnection-Web.config Connection String",
+          "value": {
+            "isEncrypted": false,
+            "value": "data source=database.production.psm-archive.js-devops.co.uk;initial catalog=PsmArchive;persist security info=True;user id=psmarchive;password=asY7lan*ka~991;multipleactiveresultsets=True;application name=EntityFramework"
+          }
+        }
+      ],
+      "notifications": [
+
+      ]
+    },
+    "projectsMode": 0,
+    "selectedProjects": [
+
+    ],
+    "projects": [
+      {
+        "projectId": 168878,
+        "name": "Bonus",
+        "isSelected": false
+      },
+      {
+        "projectId": 172210,
+        "name": "CAM-FTP-REPLACEMENT",
+        "isSelected": false
+      },
+      {
+        "projectId": 172457,
+        "name": "DRM",
+        "isSelected": false
+      },
+      {
+        "projectId": 187022,
+        "name": "JsPlc.Common.Logging",
+        "isSelected": false
+      },
+      {
+        "projectId": 172228,
+        "name": "Link",
+        "isSelected": false
+      },
+      {
+        "projectId": 187730,
+        "name": "OMR",
+        "isSelected": false
+      },
+      {
+        "projectId": 172213,
+        "name": "PetrolPricing",
+        "isSelected": false
+      },
+      {
+        "projectId": 172448,
+        "name": "PSM-Archive",
+        "isSelected": false
+      },
+      {
+        "projectId": 172137,
+        "name": "Risk",
+        "isSelected": false
+      }
+    ],
+    "securityDescriptor": {
+      "accessRightDefinitions": [
+        {
+          "name": "View",
+          "description": "View"
+        },
+        {
+          "name": "Deploy",
+          "description": "Deploy build"
+        },
+        {
+          "name": "Update",
+          "description": "Update"
+        },
+        {
+          "name": "Delete",
+          "description": "Delete"
+        }
+      ],
+      "roleAces": [
+        {
+          "roleId": 53958,
+          "name": "Administrator",
+          "isAdmin": true,
+          "accessRights": [
+            {
+              "name": "View",
+              "allowed": true
+            },
+            {
+              "name": "Deploy",
+              "allowed": true
+            },
+            {
+              "name": "Update",
+              "allowed": true
+            },
+            {
+              "name": "Delete",
+              "allowed": true
+            }
+          ]
+        },
+        {
+          "roleId": 53959,
+          "name": "User",
+          "isAdmin": false,
+          "accessRights": [
+            {
+              "name": "View"
+            },
+            {
+              "name": "Deploy"
+            },
+            {
+              "name": "Update"
+            },
+            {
+              "name": "Delete"
+            }
+          ]
+        },
+        {
+          "roleId": 58271,
+          "name": "Developers",
+          "isAdmin": false,
+          "accessRights": [
+            {
+              "name": "View"
+            },
+            {
+              "name": "Deploy"
+            },
+            {
+              "name": "Update"
+            },
+            {
+              "name": "Delete"
+            }
+          ]
+        }
+      ]
+    },
+    "created": "2016-03-18T15:58:28.4331814+00:00",
+    "updated": "2016-04-21T12:58:47.0191527+00:00"
+  }
+}
