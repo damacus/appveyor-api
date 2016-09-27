@@ -1,12 +1,13 @@
+# frozen_string_literal: true
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
 ## Uncomment and set this to only include directories you want to watch
 directories %w(lib) \
- .select{|d| Dir.exists?(d) ? d : UI.warning("Directory #{d} does not exist")}
+  .select { |d| Dir.exist?(d) ? d : UI.warning("Directory #{d} does not exist") }
 
-guard :rspec, cmd: "bundle exec rspec --color --format documentation" do
-  require "guard/rspec/dsl"
+guard :rspec, cmd: 'bundle exec rspec --color --format documentation' do
+  require 'guard/rspec/dsl'
   dsl = Guard::RSpec::Dsl.new(self)
 
   # RSpec files
@@ -18,5 +19,4 @@ guard :rspec, cmd: "bundle exec rspec --color --format documentation" do
   # Ruby files
   ruby = dsl.ruby
   dsl.watch_spec_files_for(ruby.lib_files)
-
 end
