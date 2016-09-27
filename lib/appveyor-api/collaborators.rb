@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # Collaborators
 
 def get_collaborators(config)

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # Deployment
 def get_deployment(_config, _deployment_id)
 end
@@ -41,6 +42,6 @@ def start_deploy(api_token)
   #                                     })
 end
 
-def cancel_deployment(_config, _deploymentId)
+def cancel_deployment(_config, _deployment_id)
   # /api/deployments/stop
 end
