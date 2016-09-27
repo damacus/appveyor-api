@@ -1,13 +1,13 @@
 # frozen_string_literal: true
-require 'connection'
+require 'appveyor-api/connection'
 
 describe 'AppVeyor connection' do
   before(:each) do
-    @connection = Connection.new('test_token')
+    @connection = AppVeyorApi::Connection.new('test_token')
   end
 
   it 'should exist' do
-    expect(@connection).to be_an_instance_of(Connection)
+    expect(@connection).to be_an_instance_of(AppVeyorApi::Connection)
   end
 
   it 'should return a token' do

@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-require 'environments'
+require 'appveyor-api/environments'
 
 describe 'Environments' do
   before(:each) do
@@ -18,12 +18,18 @@ end
 describe 'Environment' do
   describe 'dev' do
     before :each do
-      @environment = Environment.new
-      @environment.name = 'dev'
+      # @environment = Environment.new
+      @environments = Environments.new
+      # @environment.name = 'dev'
+      @environment = @environments.find_by_name('dev')
     end
-    it 'should have a name' do
+    it 'should have name dev' do
       expect(@environment).to respond_to(:name)
       expect(@environment.name).to match('dev')
+    end
+    it 'should have an environment variable' do
+      expect(@environment.settings['environmentVariables'][0]['name']).to match('environment-variable-1')
+      expect(@environment.settings['environmentVariables'][0]['value']['value']).to match('environment-variable')
     end
   end
 

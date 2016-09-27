@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 require 'faraday'
 require 'json'
+require 'appveyor-api/connection'
 
 # Wrapper around the Environment object
 # Used for searching for environments
@@ -13,24 +14,32 @@ require 'json'
 # An environment
 #
 class Environments
-  def find_by_name(_name)
-    conn = Faraday.new(url: 'https://ci.appveyor.com') do |faraday|
-      faraday.request  :url_encoded             # form-encode POST params
-      faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
-    end
 
-    # GET environment by name
-    # env_resp =
-    conn.get do |r|
+  conn = AppVeyorApi::Connection.new('gt4hl5w028pdwujykubb')
+
+  def environment_list
+    envs_resp = conn.get do |r|
       r.url '/api/environments'
-      r.headers['Content-Type'] = 'application/json'
-      r.headers['Authorization'] = 'Bearer gt4hl5w028pdwujykubb'
     end
 
-    # env_list = JSON.parse(env_resp.body)
+    envs_list = JSON.parse(envs_resp.body)
+    envs_hash = {}
+    (0..envs_list.length - 1).each do |e|
+       envs_hash.store(envs_list[e]['name'], envs_list[e]['deploymentEnvironmentId'])
+    end
+    return envs_hash
+  end
+  # returns Environments hash
+  def find_by_name(name)
+    e = environment_list
 
-    # GET environment settings (i.e. the actual environment object)
-    Environment.new
+    env_resp = conn.get do |r|
+      r.url "/api/environments/#{e[name]}/settings"
+    end
+
+    env = JSON.parse(env_resp.body)
+
+    Environment.new(env['environment'])
   end
 end
 
@@ -73,6 +82,10 @@ class Environment
     @projectsMode
   end
 
+  def selected_projects
+    @selectedProjects
+  end
+
   attr_accessor :deploymentEnvironmentId
   attr_accessor :accountId
   attr_accessor :name
@@ -82,4 +95,8 @@ class Environment
   attr_accessor :updated
   attr_accessor :settings
   attr_accessor :provider_settings
+  attr_accessor :environmentAccessKey
+  attr_accessor :selectedProjects
+  attr_accessor :projects
+  attr_accessor :securityDescriptor
 end
