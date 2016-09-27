@@ -5,4 +5,4 @@ Style/FileName:
   Enabled: false
 
 AllCops:
-  TargetRubyVersion: 2.1
+  TargetRubyVersion: 2.3
