@@ -1,6 +1,7 @@
 
 # frozen_string_literal: true
 require 'appveyor-api/environments'
+require 'appveyor-api/response'
 
 module AppVeyor
   class Client

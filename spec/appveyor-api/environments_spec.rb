@@ -3,11 +3,11 @@
 context AppVeyor::Client do
   describe 'Environments' do
     before(:each) do
-      @client = AppVeyor::Client.new()
+      @client = AppVeyor::Client.new(access_token:'token')
     end
 
     it 'should return an environment' do
-      expect(@client.environments.find_by_name('dev')).to be_an_instance_of(AppVeyor::Environment)
+      expect(@client.find_by_name('dev')).to be_an_instance_of(AppVeyor::Environment)
     end
   end
 end
