@@ -62,7 +62,7 @@ module AppVeyor
     end
 
     def faraday_url
-      @api_endpoint || 'https://ci.appveyor.com'
+      @api_endpoint ||= 'https://ci.appveyor.com'
     end
   end
 end

@@ -27,7 +27,9 @@ module AppVeyor
     def find_by_name(name)
       e = environment_list
       env = send_get("/api/environments/#{e[name]}/settings")
-      AppVeyor::Environment.new(env['environment'])
+
+      puts env.body['environment']['settings']['environmentVariables'][0]['name']
+      AppVeyor::Environment.new(env.body['environment'])
     end
   end
 end
