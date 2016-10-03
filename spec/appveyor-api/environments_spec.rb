@@ -3,7 +3,7 @@
 context AppVeyor::Client do
   describe 'Environments' do
     before(:each) do
-      @client = AppVeyor::Client.new()
+      @client = AppVeyor::Client.new
     end
 
     it 'should return an environment' do
@@ -29,25 +29,26 @@ context AppVeyor::Environment do
           @environment = AppVeyor::Client.new
           @dev_environment = @environment.find_by_name('dev')
 
-          expect(@dev_environment.settings['environmentVariables'][0]['name']).to match('environment-variable-1')
+          expect(@dev_environment.settings['environmentVariables'][0]['name'])
+            .to match('environment-variable-1')
 
-          # expect(@dev_environment[:settings][:environmentVariables][0][:value][:value]).to match('environment-variable')
+          expect(@dev_environment.settings['environmentVariables'][0]['value']['value'])
+            .to match('environment-variable')
         end
       end
     end
   end
 end
 
-
 context AppVeyor::Environment do
   describe 'Stubbed environment' do
     describe 'test' do
       before :each do
         @environment = AppVeyor::Environment.new('deploymentEnvironmentId' => 10_989,
-                                       'accountId' => 56_787,
-                                       'provider' => 'Agent',
-                                       'name' => 'test',
-                                       'settings' =>
+                                                 'accountId' => 56_787,
+                                                 'provider' => 'Agent',
+                                                 'name' => 'test',
+                                                 'settings' =>
                                         { 'providerSettings' =>
                                           [{
                                             'name' => 'test_setting',

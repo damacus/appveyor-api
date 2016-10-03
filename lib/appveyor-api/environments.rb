@@ -13,15 +13,17 @@ require 'json'
 # An environment
 #
 module AppVeyor
+  #
+  #
   module Environments
     # returns Environments hash
     def environment_list
       envs_list = send_get('/api/environments').body
       envs_hash = {}
       (0..envs_list.length - 1).each do |e|
-         envs_hash.store(envs_list[e]['name'], envs_list[e]['deploymentEnvironmentId'])
+        envs_hash.store(envs_list[e]['name'], envs_list[e]['deploymentEnvironmentId'])
       end
-      return envs_hash
+      envs_hash
     end
 
     def find_by_name(name)
@@ -33,25 +35,25 @@ module AppVeyor
     end
   end
 end
-  # The environment object as per the AppVeyor API documentation
-  # https://www.appveyor.com/docs/api/environments-deployments/
-  # CRUD actions for an environment
-  #
-  # == Parameters:
-  # deployment_environment_id:
-  # projects_mode:
-  # account_id
-  # name:
-  # settings
-  # => provider_settings: array of settings
-  #    [{"name"=>"test_setting",
-  #      "value"=>{"isEncrypted"=>false,
-  #      "value"=>"myaccount"}}]
+# The environment object as per the AppVeyor API documentation
+# https://www.appveyor.com/docs/api/environments-deployments/
+# CRUD actions for an environment
+#
+# == Parameters:
+# deployment_environment_id:
+# projects_mode:
+# account_id
+# name:
+# settings
+# => provider_settings: array of settings
+#    [{"name"=>"test_setting",
+#      "value"=>{"isEncrypted"=>false,
+#      "value"=>"myaccount"}}]
 
 module AppVeyor
   # == Returns:
   # An environment object
-  #4
+  # 4
   class Environment
     def initialize(options = {})
       options.each { |k, v| public_send("#{k}=", v) } if options

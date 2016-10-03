@@ -4,6 +4,14 @@ require 'appveyor-api/environments'
 require 'appveyor-api/response'
 
 module AppVeyor
+  # Main client object that you interactive with AppVeyor via
+  #
+  # == Parameters:
+  #
+  # == Use:
+  # @client = AppVeyor::Client.new
+  # @client.find_by_name('dev')
+  #
   class Client
     include Environments
 
@@ -49,12 +57,12 @@ module AppVeyor
     def default_headers
       {
         'Accept'        => 'application/json',
-        'Authorization' => "Bearer #{access_token}",
+        'Authorization' => "Bearer #{access_token}"
       }
     end
 
     def faraday_headers
-      return default_headers
+      default_headers
     end
 
     def access_token

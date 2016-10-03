@@ -1,4 +1,7 @@
+# frozen_string_literal: true
 module AppVeyor
+  # Response from request
+  #
   class Response
     def initialize(faraday_response)
       @raw_body    = faraday_response.body
@@ -12,7 +15,7 @@ module AppVeyor
 
     def headers
       @headers ||= @raw_headers.inject({}) do |result, (key, value)|
-        result.merge(key.split("-").map(&:capitalize).join("-") => value)
+        result.merge(key.split('-').map(&:capitalize).join('-') => value)
       end
     end
 
