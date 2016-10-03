@@ -1,0 +1,5 @@
+machine:
+  # Version of ruby to use
+  ruby:
+    version:
+      2.3.1p112
