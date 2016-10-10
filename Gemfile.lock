@@ -1,3 +1,11 @@
+PATH
+  remote: .
+  specs:
+    appveyor-api (0.0.1)
+      faraday
+      faraday_middleware
+      json
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -45,6 +53,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    rake (11.3.0)
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
@@ -53,7 +62,7 @@ GEM
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
       rspec-mocks (~> 3.5.0)
-    rspec-core (3.5.2)
+    rspec-core (3.5.3)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -82,12 +91,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  faraday
-  faraday_middleware
+  appveyor-api!
+  bundler (~> 1.6)
   growl
   guard
   guard-rspec
+  rake
   rb-readline
+  rspec
   simplecov
   vcr
   webmock

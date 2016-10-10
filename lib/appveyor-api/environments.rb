@@ -34,6 +34,22 @@ module AppVeyor
       AppVeyor::Environment.new(env.body['environment'])
     end
   end
+
+  # module Environment
+  #   def add_environment(Environment)
+  #     send_post('/api/environments')
+  #   end
+  #
+  #   def update_environment(Environment)
+  #     send_put('/api/environments')
+  #   end
+  #
+  #   def delete_environment(env)
+  #    send_delete('/api/environments/#{env}')
+  #   end
+  #
+  #
+  # end
 end
 # The environment object as per the AppVeyor API documentation
 # https://www.appveyor.com/docs/api/environments-deployments/
