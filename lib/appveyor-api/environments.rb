@@ -69,7 +69,7 @@ end
 module AppVeyor
   # == Returns:
   # An environment object
-  # 4
+  #
   class Environment
     def initialize(options = {})
       options.each { |k, v| public_send("#{k}=", v) } if options
