@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-context AppVeyor::Environment do
+RSpec.context AppVeyor::Environment do
   describe 'Stubbed environment' do
     describe 'test' do
       before :each do
@@ -58,7 +58,7 @@ context AppVeyor::Environment do
   end
 end
 
-context AppVeyor::Client do
+RSpec.context AppVeyor::Client do
   describe 'Create Environment' do
     before :each do
       @client = AppVeyor::Client.new
@@ -98,7 +98,7 @@ context AppVeyor::Client do
   end
 end
 
-context AppVeyor::Client do
+RSpec.context AppVeyor::Client do
   describe 'Update Environment' do
     before :each do
       @e1={"deploymentEnvironmentId":12168,"name":"production","provider":"FTP","settings":{"providerSettings":[{"name":"server","value":{"value":"ftp.server.com","isEncrypted":false}},{"name":"username","value":{"value":"ftp-user","isEncrypted":false}},{"name":"password","value":{"value":"password","isEncrypted":true}}],"environmentVariables":[{"name":"my-var","value":{"value":"123","isEncrypted":false}}]}}

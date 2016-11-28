@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-context AppVeyor::Client do
+RSpec.context AppVeyor::Client do
   describe 'Environments' do
     before(:each) do
       @client = AppVeyor::Client.new
@@ -29,7 +29,7 @@ context AppVeyor::Client do
   end
 end
 
-context AppVeyor::Environment do
+RSpec.context AppVeyor::Environment do
   describe 'Dev Environment (hits API)' do
     describe 'dev' do
       it 'should have an environment variable' do

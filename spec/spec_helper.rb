@@ -12,16 +12,10 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
-  #config.filter_run :focus
   config.run_all_when_everything_filtered = true
-
-  # config.disable_monkey_patching!
-  # config.expose_dsl_globally = true
-  #config.warnings = true
-
   config.default_formatter = 'doc' if config.files_to_run.one?
 
-  # config.profile_examples = 10
+  config.disable_monkey_patching!
   config.order = :random
   Kernel.srand config.seed
 end
