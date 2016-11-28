@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'spec_helper'
 
-describe AppVeyor::Client do
+RSpec.describe AppVeyor::Client do
   before(:each) do
     @client = AppVeyor::Client.new(access_token: 'test_token')
   end

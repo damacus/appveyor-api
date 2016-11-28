@@ -29,27 +29,28 @@ module AppVeyor
     def find_by_name(name)
       e = environment_list
       env = send_get("/api/environments/#{e[name]}/settings")
-
-      puts env.body['environment']['settings']['environmentVariables'][0]['name']
       AppVeyor::Environment.new(env.body['environment'])
+    end
+
+    def find_by_id(id)
+      env = send_get("/api/environments/#{id}/settings")
+      AppVeyor::Environment.new(env.body['environment'])
+    end
+
+    def create_environment(e)
+      env = send_post('/api/environments', e)
+      AppVeyor::Environment.new(env.body['environment'])
+    end
+
+    def update_environment(e)
+      env = send_put('/api/environments', e)
+      AppVeyor::Environment.new(env.body)
     end
   end
 
-  # module Environment
-  #   def add_environment(Environment)
-  #     send_post('/api/environments')
-  #   end
-  #
-  #   def update_environment(Environment)
-  #     send_put('/api/environments')
-  #   end
-  #
-  #   def delete_environment(env)
-  #    send_delete('/api/environments/#{env}')
-  #   end
-  #
-  #
-  # end
+#   def delete_environment(env)
+#    send_delete('/api/environments/#{env}')
+#   end
 end
 # The environment object as per the AppVeyor API documentation
 # https://www.appveyor.com/docs/api/environments-deployments/
@@ -69,7 +70,7 @@ end
 module AppVeyor
   # == Returns:
   # An environment object
-  # 4
+  #
   class Environment
     def initialize(options = {})
       options.each { |k, v| public_send("#{k}=", v) } if options
