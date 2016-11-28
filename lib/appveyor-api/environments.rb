@@ -48,9 +48,9 @@ module AppVeyor
     end
   end
 
-#   def delete_environment(env)
-#    send_delete('/api/environments/#{env}')
-#   end
+  #   def delete_environment(env)
+  #    send_delete('/api/environments/#{env}')
+  #   end
 end
 # The environment object as per the AppVeyor API documentation
 # https://www.appveyor.com/docs/api/environments-deployments/

@@ -83,7 +83,10 @@ RSpec.context AppVeyor::Client do
                                            }
                                          }]
                                       })
+      # rubocop:disable Metrics/LineLength
+
       @e={"name":"production","provider":"FTP","settings":{"providerSettings":[{"name":"server","value":{"value":"ftp.myserver.com","isEncrypted":false}},{"name":"username","value":{"value":"ftp-user","isEncrypted":false}},{"name":"password","value":{"value":"password","isEncrypted":true}}],"environmentVariables":[{"name":"my-var","value":{"value":"123","isEncrypted":false}}]}}
+      # rubocop:enable Metrics/LineLength
     end
 
     it 'should be able to create an environment' do
@@ -101,8 +104,10 @@ end
 RSpec.context AppVeyor::Client do
   describe 'Update Environment' do
     before :each do
+      # rubocop:disable Metrics/LineLength
       @e1={"deploymentEnvironmentId":12168,"name":"production","provider":"FTP","settings":{"providerSettings":[{"name":"server","value":{"value":"ftp.server.com","isEncrypted":false}},{"name":"username","value":{"value":"ftp-user","isEncrypted":false}},{"name":"password","value":{"value":"password","isEncrypted":true}}],"environmentVariables":[{"name":"my-var","value":{"value":"123","isEncrypted":false}}]}}
       @e2={"deploymentEnvironmentId":12168,"name":"production","provider":"FTP","settings":{"providerSettings":[{"name":"server","value":{"value":"ftp.acme.com","isEncrypted":false}},{"name":"username","value":{"value":"ftp-user","isEncrypted":false}},{"name":"password","value":{"value":"password","isEncrypted":true}}],"environmentVariables":[{"name":"my-var","value":{"value":"123","isEncrypted":false}}]}}
+      # rubocop:enable Metrics/LineLength
       @client = AppVeyor::Client.new
     end
 
