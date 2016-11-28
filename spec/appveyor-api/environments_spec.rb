@@ -11,6 +11,13 @@ context AppVeyor::Client do
         expect(@client.find_by_name('dev')).to be_an_instance_of(AppVeyor::Environment)
       end
     end
+
+    it 'should return environment 12168' do
+      VCR.use_cassette('environment 12168') do
+        expect(@client.find_by_id('12168')).to be_an_instance_of(AppVeyor::Environment)
+      end
+    end
+
     it 'should return an environment list' do
       expect(@client).to respond_to(:environment_list)
 
@@ -18,6 +25,7 @@ context AppVeyor::Client do
         expect(@client.environment_list).to be_a(Hash)
       end
     end
+
   end
 end
 

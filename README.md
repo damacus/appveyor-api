@@ -2,3 +2,6 @@
 
 # appveyor-api
 A wrapper for the AppVeyor API
+
+Inspiration from 
+https://github.com/esaio/esa-ruby

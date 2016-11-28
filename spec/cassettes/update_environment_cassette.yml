@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ci.appveyor.com/api/environments
+    body:
+      encoding: UTF-8
+      string: '{"deploymentEnvironmentId":11400,"name":"production","provider":"FTP","settings":{"providerSettings":[{"name":"server","value":{"value":"ftp.server.com","isEncrypted":false}},{"name":"username","value":{"value":"ftp-user","isEncrypted":false}},{"name":"password","value":{"value":"password","isEncrypted":true}}],"environmentVariables":[{"name":"my-var","value":{"value":"123","isEncrypted":false}}]}}'
+    headers:
+      Accept:
+      - application/json
+      Authorization:
+      - Bearer <APPVEYOR_API_KEY>
+      User-Agent:
+      - Faraday v0.9.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 18 Oct 2016 12:46:08 GMT
+      Content-Length:
+      - '1130'
+    body:
+      encoding: UTF-8
+      string: '{"deploymentEnvironmentId":11413,"accountId":33256,"name":"production","provider":"FTP","environmentAccessKey":"fnliibmdyjat7d8w","settings":{"providerSettings":[{"name":"server","value":{"isEncrypted":false,"value":"ftp.server.com"}},{"name":"username","value":{"isEncrypted":false,"value":"ftp-user"}},{"name":"password","value":{"isEncrypted":true,"value":"password"}}],"environmentVariables":[{"name":"my-var","value":{"isEncrypted":false,"value":"123"}}],"notifications":[]},"projectsMode":0,"selectedProjects":[],"securityDescriptor":{"accessRightDefinitions":[{"name":"View","description":"View"},{"name":"Deploy","description":"Deploy
+        build"},{"name":"Update","description":"Update"},{"name":"Delete","description":"Delete"}],"roleAces":[{"roleId":53960,"name":"Administrator","isAdmin":true,"accessRights":[{"name":"View","allowed":true},{"name":"Deploy","allowed":true},{"name":"Update","allowed":true},{"name":"Delete","allowed":true}]},{"roleId":53961,"name":"User","isAdmin":false,"accessRights":[{"name":"View"},{"name":"Deploy"},{"name":"Update"},{"name":"Delete"}]}]},"created":"2016-10-18T12:46:07.6314842+00:00"}'
+    http_version: 
+  recorded_at: Tue, 18 Oct 2016 12:46:07 GMT
+recorded_with: VCR 3.0.3

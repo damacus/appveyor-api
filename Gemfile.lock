@@ -92,7 +92,7 @@ PLATFORMS
 
 DEPENDENCIES
   appveyor-api!
-  bundler (~> 1.6)
+  bundler
   growl
   guard
   guard-rspec

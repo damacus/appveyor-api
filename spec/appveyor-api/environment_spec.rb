@@ -61,7 +61,29 @@ end
 context AppVeyor::Client do
   describe 'Create Environment' do
     before :each do
-      @environment = AppVeyor::Client.new()
+      @client = AppVeyor::Client.new
+      @environment = AppVeyor::Environment.new('deploymentEnvironmentId' => 10_989,
+                                               'accountId' => 56_787,
+                                               'provider' => 'Agent',
+                                               'name' => 'test',
+                                               'settings' =>
+                                      { 'providerSettings' =>
+                                        [{
+                                          'name' => 'test_setting',
+                                          'value' => {
+                                            'isEncrypted' => false,
+                                            'value' => 'myaccount'
+                                          }
+                                        },
+                                         {
+                                           'name' => 'test_setting_2',
+                                           'value' => {
+                                             'isEncrypted' => true,
+                                             'value' => '1234567890'
+                                           }
+                                         }]
+                                      })
+      @e={"name":"production","provider":"FTP","settings":{"providerSettings":[{"name":"server","value":{"value":"ftp.myserver.com","isEncrypted":false}},{"name":"username","value":{"value":"ftp-user","isEncrypted":false}},{"name":"password","value":{"value":"password","isEncrypted":true}}],"environmentVariables":[{"name":"my-var","value":{"value":"123","isEncrypted":false}}]}}
     end
 
     it 'should be able to create an environment' do
@@ -70,8 +92,33 @@ context AppVeyor::Client do
 
     it 'should return an environment' do
       VCR.use_cassette('create environment cassette') do
-        expect(@client.create_environment(@environment)).to be_an_instance_of(AppVeyor::Environment)
+        expect(@client.create_environment(@e)).to be_an_instance_of(AppVeyor::Environment)
       end
+    end
+  end
+end
+
+context AppVeyor::Client do
+  describe 'Update Environment' do
+    before :each do
+      @e1={"deploymentEnvironmentId":12168,"name":"production","provider":"FTP","settings":{"providerSettings":[{"name":"server","value":{"value":"ftp.server.com","isEncrypted":false}},{"name":"username","value":{"value":"ftp-user","isEncrypted":false}},{"name":"password","value":{"value":"password","isEncrypted":true}}],"environmentVariables":[{"name":"my-var","value":{"value":"123","isEncrypted":false}}]}}
+      @e2={"deploymentEnvironmentId":12168,"name":"production","provider":"FTP","settings":{"providerSettings":[{"name":"server","value":{"value":"ftp.acme.com","isEncrypted":false}},{"name":"username","value":{"value":"ftp-user","isEncrypted":false}},{"name":"password","value":{"value":"password","isEncrypted":true}}],"environmentVariables":[{"name":"my-var","value":{"value":"123","isEncrypted":false}}]}}
+      @client = AppVeyor::Client.new
+    end
+
+    it 'should be able to update an environment' do
+      expect(@client).to respond_to(:update_environment)
+    end
+
+    it 'should update and return an updated variable' do
+      VCR.use_cassette('add FTP environment cassette') do
+        @client.create_environment(@e1)
+      end
+      VCR.use_cassette('update FTP environment cassette') do
+        @updated_environment = @client.update_environment(@e2)
+      end
+
+      expect(@updated_environment.settings['providerSettings'][0]['value']['value']).to match('ftp.acme.com')
     end
   end
 end
