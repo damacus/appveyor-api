@@ -6,3 +6,5 @@ Style/FileName:
 
 AllCops:
   TargetRubyVersion: 2.3
+  Exclude:
+    - 'spec/**/*'

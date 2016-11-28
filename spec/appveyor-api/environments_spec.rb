@@ -25,7 +25,6 @@ RSpec.context AppVeyor::Client do
         expect(@client.environment_list).to be_a(Hash)
       end
     end
-
   end
 end
 
