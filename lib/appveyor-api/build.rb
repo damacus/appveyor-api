@@ -12,7 +12,7 @@ def start_build
   # }
 end
 
-def start_commit_buld
+def start_commit_build
   #   {
   #     accountName: 'your-account-name',
   #     projectSlug: 'project-slug-from-url',
