@@ -27,33 +27,31 @@ module AppVeyor
     end
 
     def find_by_name(name)
-      found_environment = []
-      client.environment_list.each_value do |n|
-        found_environment << n if n == name
-        raise 'Multiple Environments found during search' if found_environment.length > 1
-      end
+      found_environment = {}
+      found_environment = environment_list.select { |key, val| val == name }
+      raise 'Multiple Environments found during search' if found_environment.length > 1
 
-      env = send_get("/api/environments/#{e[name]}/settings")
-      AppVeyor::Environment.new(env.body['environment'])
+      environment = send_get("/api/environments/#{found_environment.keys.first}/settings")
+      AppVeyor::Environment.new(environment.body['environment'])
     end
 
     def find_by_id(id)
-      env = send_get("/api/environments/#{id}/settings")
+      environment = send_get("/api/environments/#{id}/settings")
+      AppVeyor::Environment.new(environment.body['environment'])
+    end
+
+    def create_environment(environment)
+      env = send_post('/api/environments', environment)
       AppVeyor::Environment.new(env.body['environment'])
     end
 
-    def create_environment(e)
-      env = send_post('/api/environments', e)
-      AppVeyor::Environment.new(env.body['environment'])
-    end
-
-    def update_environment(e)
-      env = send_put('/api/environments', e)
+    def update_environment(environment)
+      env = send_put('/api/environments', environment)
       AppVeyor::Environment.new(env.body)
     end
 
-    def delete_environment(env_id)
-     send_delete("/api/environments/#{env_id}")
+    def delete_environment(environment_id)
+      send_delete("/api/environments/#{environment_id}")
     end
   end
 end
