@@ -126,4 +126,28 @@ RSpec.context AppVeyor::Client do
       expect(@updated_environment.settings['providerSettings'][0]['value']['value']).to match('ftp.acme.com')
     end
   end
+
+  describe 'Delete Environment 12168' do
+    before :each do
+      @client = AppVeyor::Client.new
+    end
+
+    it 'should be able to delete an environment' do
+      expect(@client).to respond_to(:delete_environment)
+    end
+
+    it 'should delete return a 204 response code' do
+      VCR.use_cassette('delete environment') do
+        @del_env = @client.delete_environment(12168)
+        expect(@del_env.status).to match(204)
+      end
+    end
+
+    it 'should not have environment 12168 in the environments list' do
+      VCR.use_cassette('environment_list_after_delete') do
+        expect(@client.find_by_id(12168).deployment_environment_id).to be_nil
+      end        
+    end
+
+  end
 end

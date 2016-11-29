@@ -21,13 +21,18 @@ module AppVeyor
       envs_list = send_get('/api/environments').body
       envs_hash = {}
       (0..envs_list.length - 1).each do |e|
-        envs_hash.store(envs_list[e]['name'], envs_list[e]['deploymentEnvironmentId'])
+        envs_hash.store(envs_list[e]['deploymentEnvironmentId'], envs_list[e]['name'])
       end
       envs_hash
     end
 
     def find_by_name(name)
-      e = environment_list
+      found_environment = []
+      client.environment_list.each_value do |n|
+        found_environment << n if n == name
+        raise 'Multiple Environments found during search' if found_environment.length > 1
+      end
+
       env = send_get("/api/environments/#{e[name]}/settings")
       AppVeyor::Environment.new(env.body['environment'])
     end
@@ -46,11 +51,11 @@ module AppVeyor
       env = send_put('/api/environments', e)
       AppVeyor::Environment.new(env.body)
     end
-  end
 
-  #   def delete_environment(env)
-  #    send_delete('/api/environments/#{env}')
-  #   end
+    def delete_environment(env_id)
+     send_delete("/api/environments/#{env_id}")
+    end
+  end
 end
 # The environment object as per the AppVeyor API documentation
 # https://www.appveyor.com/docs/api/environments-deployments/
