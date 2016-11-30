@@ -16,8 +16,8 @@ RSpec.configure do |config|
   config.default_formatter = 'doc' if config.files_to_run.one?
 
   config.disable_monkey_patching!
-  config.order = :random
-  Kernel.srand config.seed
+  # config.order = :random
+  # Kernel.srand config.seed
 end
 
 VCR.configure do |c|
