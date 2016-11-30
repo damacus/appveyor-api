@@ -1,6 +1,7 @@
 
 # frozen_string_literal: true
 require 'appveyor-api/environments'
+require 'appveyor-api/projects'
 require 'appveyor-api/response'
 
 module AppVeyor
@@ -14,6 +15,7 @@ module AppVeyor
   #
   class Client
     include Environments
+    include Projects
 
     def initialize(access_token: nil)
       @access_token = access_token
