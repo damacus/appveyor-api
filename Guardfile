@@ -1,9 +1,10 @@
 # frozen_string_literal: true
+
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
 ## Uncomment and set this to only include directories you want to watch
-directories %w(lib) \
+directories %w[lib] \
   .select { |d| Dir.exist?(d) ? d : UI.warning("Directory #{d} does not exist") }
 
 guard :rspec, cmd: 'bundle exec rspec --color --format documentation' do

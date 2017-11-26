@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.context AppVeyor::Environment do
+RSpec.context AppVeyor::Environment, :environment do
   describe 'Stubbed environment' do
     describe 'test' do
       before :each do
@@ -59,7 +59,7 @@ RSpec.context AppVeyor::Environment do
 end
 
 RSpec.context AppVeyor::Client do
-  describe 'Create Environment' do
+  describe 'Create Environment', :environment do
     before :each do
       @client = AppVeyor::Client.new
       @environment = AppVeyor::Environment.new('deploymentEnvironmentId' => 10_989,
@@ -105,8 +105,8 @@ RSpec.context AppVeyor::Client do
   describe 'Update Environment' do
     before :each do
       # rubocop:disable Metrics/LineLength
-      @e1={"deploymentEnvironmentId":12168,"name":"production","provider":"FTP","settings":{"providerSettings":[{"name":"server","value":{"value":"ftp.server.com","isEncrypted":false}},{"name":"username","value":{"value":"ftp-user","isEncrypted":false}},{"name":"password","value":{"value":"password","isEncrypted":true}}],"environmentVariables":[{"name":"my-var","value":{"value":"123","isEncrypted":false}}]}}
-      @e2={"deploymentEnvironmentId":12168,"name":"production","provider":"FTP","settings":{"providerSettings":[{"name":"server","value":{"value":"ftp.acme.com","isEncrypted":false}},{"name":"username","value":{"value":"ftp-user","isEncrypted":false}},{"name":"password","value":{"value":"password","isEncrypted":true}}],"environmentVariables":[{"name":"my-var","value":{"value":"123","isEncrypted":false}}]}}
+      @e1={"deploymentEnvironmentId":32724,"name":"production","provider":"FTP","settings":{"providerSettings":[{"name":"server","value":{"value":"ftp.server.com","isEncrypted":false}},{"name":"username","value":{"value":"ftp-user","isEncrypted":false}},{"name":"password","value":{"value":"password","isEncrypted":true}}],"environmentVariables":[{"name":"my-var","value":{"value":"123","isEncrypted":false}}]}}
+      @e2={"deploymentEnvironmentId":32724,"name":"production","provider":"FTP","settings":{"providerSettings":[{"name":"server","value":{"value":"ftp.acme.com","isEncrypted":false}},{"name":"username","value":{"value":"ftp-user","isEncrypted":false}},{"name":"password","value":{"value":"password","isEncrypted":true}}],"environmentVariables":[{"name":"my-var","value":{"value":"123","isEncrypted":false}}]}}
       # rubocop:enable Metrics/LineLength
       @client = AppVeyor::Client.new
     end
@@ -127,7 +127,7 @@ RSpec.context AppVeyor::Client do
     end
   end
 
-  describe 'Delete Environment 12168' do
+  describe 'Delete Environment 32724' do
     before :each do
       @client = AppVeyor::Client.new
     end
@@ -138,15 +138,15 @@ RSpec.context AppVeyor::Client do
 
     it 'should delete return a 204 response code' do
       VCR.use_cassette('delete environment') do
-        @del_env = @client.delete_environment(12168)
+        @del_env = @client.delete_environment(32724)
         expect(@del_env.status).to match(204)
       end
     end
 
-    it 'should not have environment 12168 in the environments list' do
+    it 'should not have environment 32724 in the environments list' do
       VCR.use_cassette('environment_list_after_delete') do
-        expect(@client.find_by_id(12168).deployment_environment_id).to be_nil
-      end        
+        expect(@client.find_by_id(32724).deployment_environment_id).to be_nil
+      end
     end
 
   end

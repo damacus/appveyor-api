@@ -5,7 +5,7 @@ http_interactions:
     uri: https://ci.appveyor.com/api/environments
     body:
       encoding: UTF-8
-      string: '{"deploymentEnvironmentId":11400,"name":"production","provider":"FTP","settings":{"providerSettings":[{"name":"server","value":{"value":"ftp.acme.com","isEncrypted":false}},{"name":"username","value":{"value":"ftp-user","isEncrypted":false}},{"name":"password","value":{"value":"password","isEncrypted":true}}],"environmentVariables":[{"name":"my-var","value":{"value":"123","isEncrypted":false}}]}}'
+      string: '{"deploymentEnvironmentId":32724,"name":"production","provider":"FTP","settings":{"providerSettings":[{"name":"server","value":{"value":"ftp.acme.com","isEncrypted":false}},{"name":"username","value":{"value":"ftp-user","isEncrypted":false}},{"name":"password","value":{"value":"password","isEncrypted":true}}],"environmentVariables":[{"name":"my-var","value":{"value":"123","isEncrypted":false}}]}}'
     headers:
       Accept:
       - application/json
@@ -30,20 +30,22 @@ http_interactions:
       - application/json; charset=utf-8
       Expires:
       - "-1"
-      Server:
-      - Microsoft-IIS/8.5
-      X-Aspnet-Version:
-      - 4.0.30319
-      X-Powered-By:
-      - ASP.NET
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
       Date:
-      - Tue, 18 Oct 2016 12:47:30 GMT
+      - Sun, 26 Nov 2017 10:33:41 GMT
       Content-Length:
-      - '1174'
+      - '1184'
     body:
       encoding: UTF-8
-      string: '{"deploymentEnvironmentId":11400,"accountId":33256,"name":"production","provider":"FTP","environmentAccessKey":"wm4ya9ywjayk39t5","settings":{"providerSettings":[{"name":"server","value":{"isEncrypted":false,"value":"ftp.acme.com"}},{"name":"username","value":{"isEncrypted":false,"value":"ftp-user"}},{"name":"password","value":{"isEncrypted":true,"value":"password"}}],"environmentVariables":[{"name":"my-var","value":{"isEncrypted":false,"value":"123"}}],"notifications":[]},"projectsMode":0,"selectedProjects":[],"securityDescriptor":{"accessRightDefinitions":[{"name":"View","description":"View"},{"name":"Deploy","description":"Deploy
-        build"},{"name":"Update","description":"Update"},{"name":"Delete","description":"Delete"}],"roleAces":[{"roleId":53960,"name":"Administrator","isAdmin":true,"accessRights":[{"name":"View","allowed":true},{"name":"Deploy","allowed":true},{"name":"Update","allowed":true},{"name":"Delete","allowed":true}]},{"roleId":53961,"name":"User","isAdmin":false,"accessRights":[{"name":"View"},{"name":"Deploy"},{"name":"Update"},{"name":"Delete"}]}]},"created":"2016-10-17T21:14:22.6782835+00:00","updated":"2016-10-18T12:47:29.9674605+00:00"}'
+      string: '{"deploymentEnvironmentId":32724,"accountId":33256,"name":"production","provider":"FTP","environmentAccessKey":"wp9b7xrpqatdb8pw","settings":{"providerSettings":[{"name":"server","value":{"isEncrypted":false,"value":"ftp.acme.com"}},{"name":"username","value":{"isEncrypted":false,"value":"ftp-user"}},{"name":"password","value":{"isEncrypted":true,"value":"password"}}],"environmentVariables":[{"name":"my-var","value":{"isEncrypted":false,"value":"123"}}],"notifications":[]},"projectsMode":0,"selectedProjects":[],"securityDescriptor":{"accessRightDefinitions":[{"name":"View","description":"View"},{"name":"Deploy","description":"Deploy
+        build"},{"name":"Update","description":"Update"},{"name":"Delete","description":"Delete"}],"roleAces":[{"roleId":53960,"name":"Administrator","isAdmin":true,"accessRights":[{"name":"View","allowed":true},{"name":"Deploy","allowed":true},{"name":"Update","allowed":true},{"name":"Delete","allowed":true}]},{"roleId":53961,"name":"User","isAdmin":false,"accessRights":[{"name":"View"},{"name":"Deploy"},{"name":"Update"},{"name":"Delete"}]}]},"tags":"","created":"2017-11-26T10:20:56.8583727+00:00","updated":"2017-11-26T10:33:40.2179413+00:00"}'
     http_version: 
-  recorded_at: Tue, 18 Oct 2016 12:47:30 GMT
+  recorded_at: Sun, 26 Nov 2017 10:33:41 GMT
 recorded_with: VCR 3.0.3

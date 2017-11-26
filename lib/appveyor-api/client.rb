@@ -1,8 +1,9 @@
 
 # frozen_string_literal: true
+
 require 'appveyor-api/environments'
 require 'appveyor-api/projects'
-require 'appveyor-api/response'
+# require 'appveyor-api/response'
 
 module AppVeyor
   # Main client object that you interactive with AppVeyor via
@@ -46,6 +47,7 @@ module AppVeyor
         c.request :json
         c.response :json
         c.adapter Faraday.default_adapter
+        # c.response :logger, ::Logger.new(STDOUT)
       end
     end
 

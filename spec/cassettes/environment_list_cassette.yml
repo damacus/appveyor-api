@@ -28,22 +28,21 @@ http_interactions:
       - application/json; charset=utf-8
       Expires:
       - "-1"
-      Server:
-      - Microsoft-IIS/8.5
-      X-Aspnet-Version:
-      - 4.0.30319
-      X-Powered-By:
-      - ASP.NET
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
       Date:
-      - Sat, 01 Oct 2016 08:16:31 GMT
+      - Sun, 26 Nov 2017 10:33:51 GMT
       Content-Length:
-      - '2251'
+      - '466'
     body:
       encoding: UTF-8
-      string: '[{"deploymentEnvironmentId":7437,"accountId":33256,"name":"chef-appveyor-ci-cookbook","provider":"Agent","projectsMode":0,"securityDescriptor":{"accessRightDefinitions":[{"name":"View","description":"View"},{"name":"Deploy","description":"Deploy
-        build"},{"name":"Update","description":"Update"},{"name":"Delete","description":"Delete"}],"roleAces":[{"roleId":53960,"name":"Administrator","isAdmin":true,"accessRights":[{"name":"View","allowed":true},{"name":"Deploy","allowed":true},{"name":"Update","allowed":true},{"name":"Delete","allowed":true}]},{"roleId":53961,"name":"User","isAdmin":false,"accessRights":[{"name":"View"},{"name":"Deploy"},{"name":"Update"},{"name":"Delete"}]}]},"created":"2016-01-25T15:48:33.5056397+00:00","updated":"2016-09-23T15:18:43.9334161+00:00"},{"deploymentEnvironmentId":10988,"accountId":33256,"name":"dev","provider":"Agent","projectsMode":0,"securityDescriptor":{"accessRightDefinitions":[{"name":"View","description":"View"},{"name":"Deploy","description":"Deploy
-        build"},{"name":"Update","description":"Update"},{"name":"Delete","description":"Delete"}],"roleAces":[{"roleId":53960,"name":"Administrator","isAdmin":true,"accessRights":[{"name":"View","allowed":true},{"name":"Deploy","allowed":true},{"name":"Update","allowed":true},{"name":"Delete","allowed":true}]},{"roleId":53961,"name":"User","isAdmin":false,"accessRights":[{"name":"View"},{"name":"Deploy"},{"name":"Update"},{"name":"Delete"}]}]},"created":"2016-09-26T14:26:19.8003584+00:00","updated":"2016-09-27T10:41:46.8829381+00:00"},{"deploymentEnvironmentId":10989,"accountId":33256,"name":"test","provider":"Agent","projectsMode":0,"securityDescriptor":{"accessRightDefinitions":[{"name":"View","description":"View"},{"name":"Deploy","description":"Deploy
-        build"},{"name":"Update","description":"Update"},{"name":"Delete","description":"Delete"}],"roleAces":[{"roleId":53960,"name":"Administrator","isAdmin":true,"accessRights":[{"name":"View","allowed":true},{"name":"Deploy","allowed":true},{"name":"Update","allowed":true},{"name":"Delete","allowed":true}]},{"roleId":53961,"name":"User","isAdmin":false,"accessRights":[{"name":"View"},{"name":"Deploy"},{"name":"Update"},{"name":"Delete"}]}]},"created":"2016-09-26T14:27:38.3644471+00:00"}]'
+      string: '[{"deploymentEnvironmentId":7437,"name":"chef-appveyor-ci-cookbook","provider":"Agent"},{"deploymentEnvironmentId":10988,"name":"dev","provider":"Agent"},{"deploymentEnvironmentId":32724,"name":"production","provider":"FTP"},{"deploymentEnvironmentId":12193,"name":"production-i1tsnr7ywvmh4f6","provider":"FTP"},{"deploymentEnvironmentId":12189,"name":"production-iygklxsu6jh2btz","provider":"FTP"},{"deploymentEnvironmentId":10989,"name":"test","provider":"Agent"}]'
     http_version: 
-  recorded_at: Sat, 01 Oct 2016 08:16:33 GMT
+  recorded_at: Sun, 26 Nov 2017 10:33:51 GMT
 recorded_with: VCR 3.0.3

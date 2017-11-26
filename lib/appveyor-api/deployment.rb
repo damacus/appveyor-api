@@ -1,7 +1,7 @@
 # frozen_string_literal: true
+
 # Deployment
-def get_deployment(_config, _deployment_id)
-end
+def get_deployment(_config, _deployment_id); end
 
 def start_deployment(config)
   # body = {
@@ -19,13 +19,13 @@ def start_deployment(config)
   # puts response.code
 end
 
-# def start_deployment(config)
+def start_deployment(config)
 #   conn = Faraday.new(:url => 'http://sushi.com') do |faraday|
 #     faraday.request  :url_encoded             # form-encode POST params
 #     faraday.response :logger                  # log requests to STDOUT
 #     faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
 #   end
-# end
+end
 
 def start_deploy(api_token)
   # body = {

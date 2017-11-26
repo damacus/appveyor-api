@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.context AppVeyor::Project do
-  describe 'Projects Object' do
+  describe 'Projects Object', :project do
     before :each do
       @project = AppVeyor::Project.new(
 "projectId"=>253781,
@@ -90,13 +90,13 @@ RSpec.context AppVeyor::Project do
     end
   end
 
-  describe 'Project' do
+  describe 'Project', :project do
     before :each do
       @project = AppVeyor::Client.new
     end
 
     it 'should return a Project List' do
-      VCR.use_cassette('projects list', :record => :new_episodes) do
+      VCR.use_cassette('projects list') do
         expect(@project).to respond_to(:list_projects)
         expect(@project.list_projects).to be_kind_of(Hash)
         expect(@project.list_projects[223829]).to include('chef-appveyor-ci')

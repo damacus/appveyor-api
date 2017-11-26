@@ -8,7 +8,7 @@ module AppVeyor
       # response['build']['message']
     end
 
-    def list_projects()
+    def list_projects
       projects_list = send_get('/api/projects').body
       projects_hash = {}
       (0..projects_list.length - 1).each do |x|
@@ -20,7 +20,7 @@ module AppVeyor
 
   class Project
     def initialize(options = {})
-      options.each { |k, v| public_send("#{k}=", v) } if options
+      options&.each { |k, v| public_send("#{k}=", v) }
     end
     attr_accessor :projectId
     attr_accessor :accountId
@@ -77,9 +77,7 @@ module AppVeyor
       @repositoryBranch
     end
 
-    def isPrivate
-      @isPrivate
-    end
+    attr_reader :isPrivate
 
     def skip_branches_without_appveyor_yml
       @skipBranchesWithoutAppveyorYml

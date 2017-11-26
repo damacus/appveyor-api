@@ -1,6 +1,4 @@
 # frozen_string_literal: true
-require 'faraday'
-require 'json'
 
 # Wrapper around the Environment object
 # Used for searching for environments
@@ -13,10 +11,7 @@ require 'json'
 # An environment
 #
 module AppVeyor
-  #
-  #
   module Environments
-    # returns Environments hash
     def environment_list
       envs_list = send_get('/api/environments').body
       envs_hash = {}
@@ -28,7 +23,7 @@ module AppVeyor
 
     def find_by_name(name)
       found_environment = {}
-      found_environment = environment_list.select { |key, val| val == name }
+      found_environment = environment_list.select { |_key, val| val == name }
       raise 'Multiple Environments found during search' if found_environment.length > 1
 
       environment = send_get("/api/environments/#{found_environment.keys.first}/settings")
@@ -112,5 +107,7 @@ module AppVeyor
     attr_accessor :selectedProjects
     attr_accessor :projects
     attr_accessor :securityDescriptor
+    attr_accessor :message
+    attr_accessor :tags
   end
 end
