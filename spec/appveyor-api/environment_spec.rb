@@ -94,7 +94,7 @@ RSpec.context AppVeyor::Client do
     end
 
     it 'should return an environment' do
-      VCR.use_cassette('create environment cassette') do
+      VCR.use_cassette('create environment cassette', :record => :new_episodes, :re_record_interval => 7.days) do
         expect(@client.create_environment(@e)).to be_an_instance_of(AppVeyor::Environment)
       end
     end

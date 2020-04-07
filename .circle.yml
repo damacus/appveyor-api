@@ -6,3 +6,30 @@ test:
   override:
     - RAILS_ENV=test bundle exec rspec -r rspec_junit_formatter --format progress --format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec/junit.xml
 
+version: 2.1
+jobs:
+  build:
+    parallelism: 3
+    docker
+      - image: circleci/ruby:2.6.3
+
+
+
+version: 2.1
+jobs:
+  test:
+    docker:
+      image: circleci/ruby:2.6.3
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+      - run: bundle install --path vendor/bundle
+      - save_cache:
+          key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      - run:
+          name: RSpec
+          command: bundle exec rspec -r rspec_junit_formatter --format progress --format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec/junit.xml
